@@ -14,18 +14,19 @@ export class FirestoreService {
   constructor() {}
 
   async addUser(user: User): Promise<string | undefined> {
-    return runInInjectionContext(this.injector, async () => { // Use the standalone runInInjectionContext function
+    return runInInjectionContext(this.injector, async () => { 
       try {
         const usersCollection = collection(this.firestore, 'users');
         const docRef = await addDoc(usersCollection, {
           firstName: user.firstName,
           lastName: user.lastName,
+          email: user.email,
           birthDate: user.birthDate,
           street: user.street,
           zipCode: user.zipCode,
-          city: user.city
+          city: user.city,
         });
-
+  
         console.log('User added with ID:', docRef.id);
         return docRef.id;
       } catch (error) {
@@ -34,7 +35,7 @@ export class FirestoreService {
       }
     });
   }
-
+  
   getUsers(): Observable<User[]> {
     return runInInjectionContext(this.injector, () => { 
       const usersCollection = collection(this.firestore, 'users');

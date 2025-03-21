@@ -14,6 +14,14 @@
             <input [disabled]="loading"  [(ngModel)]="user.lastName"  matInput placeholder="Last Name">
         </mat-form-field>
     </div>
+    
+  
+    <div>
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>E-Mail</mat-label>
+            <input [disabled]="loading"  [(ngModel)]="user.email"  matInput placeholder="E-Mail">
+        </mat-form-field>
+    </div>
   
     <div>
 
@@ -53,6 +61,6 @@
 <mat-dialog-actions>
 
 
-    <button [disabled]="loading"  mat-button>Cancel</button>
+    <button [disabled]="loading"  mat-button (click)="dialogRef.close()">Cancel</button>
     <button [disabled]="loading"  mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
 </mat-dialog-actions>

@@ -46,5 +46,4 @@ export class DialogAddUserComponent {
       console.error('Error saving user:', error);
     });
   }
-
 }
