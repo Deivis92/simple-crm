@@ -1,53 +1,59 @@
-
 .mat-drawer-container {
-    height: 100vh;
-  }
-  
+  height: 100vh;
+}
 
-  .sidenav {
-    width: 300px;
-    border-color: lightgray;
-    
-  }
-  
-  
- .logo-container {
-    border-bottom: 1px solid white;
+
+.sidenav {
+  width: 300px;
+  border-color: lightgray;
+
+}
+
+
+.logo-container {
+  border-bottom: 1px solid white;
   padding-left: 16px;
   padding-right: 16px;
+  display: flex;
+  align-items: center;
+  height: 137px !important;
+  padding: 12px;
+  justify-content: center;
+
+  img {
+    border-radius: 50px;
+    height: 142px;
+  }
+}
+
+
+mat-toolbar,
+mat-toolbar-row {
+  min-height: 56px;
+  height: 56px;
+}
+
+.menu-items {
+  list-style: none;
+  padding: 0px;
+  margin: 0;
+
+  li {
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 48px;
     display: flex;
     align-items: center;
-    height: 56px !important;
-  }
-  
+    cursor: pointer;
 
-  mat-toolbar, mat-toolbar-row {
-    min-height: 56px;
-    height: 56px;
-  }
-
-  .menu-items {
-    list-style: none;
-    padding: 0px;
-    margin: 0;
-
-    li {
-        padding-left: 16px;
-        padding-right: 16px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-
-        mat-icon {
-            margin-right: 16px;
-        }
-        
-        &:hover {
-            background-color: rgba(0,0,0,0.25);
-        }
-
-       
+    mat-icon {
+      margin-right: 16px;
     }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.25);
+    }
+
+
   }
-  
+}

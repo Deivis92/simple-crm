@@ -3,3 +3,39 @@
     right: 56px;
     bottom: 56px;
 }
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    tr {
+        border-bottom: 1px solid lightgray;
+        &:first-child {
+            cursor: unset;
+            &:hover {
+                background-color: unset;
+                color: unset;
+            }
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+        cursor: pointer;
+        &:hover {
+            background-color: rgb(255, 254, 254);
+            color: black;
+        }
+    }
+
+    td {
+        height: 48px;
+        
+    }
+
+    th {
+        text-align: start;
+    }
+
+   
+}
