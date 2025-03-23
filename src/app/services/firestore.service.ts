@@ -2,7 +2,9 @@ import { inject, Injectable, Injector } from '@angular/core';
 import { collection, Firestore, addDoc, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user.class';
-import { runInInjectionContext } from '@angular/core';  // Import the standalone function
+import { runInInjectionContext } from '@angular/core'; 
+import { UserDetailComponent } from '../user-detail/user-detail.component';
+import { doc, docData } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -41,5 +43,10 @@ export class FirestoreService {
       const usersCollection = collection(this.firestore, 'users');
       return collectionData(usersCollection, { idField: 'id' }) as Observable<User[]>;
     });
+  }
+
+  getUser(userId: string): Observable<User | undefined> {
+    const userDoc = doc(this.firestore, `users/${userId}`);
+    return docData(userDoc, { idField: 'id' }) as Observable<User | undefined>;
   }
 }
