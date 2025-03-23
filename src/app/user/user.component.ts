@@ -9,24 +9,32 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { FirestoreService } from '../services/firestore.service';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-
-
+import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-user',
-  imports: [MatButtonModule, MatIconModule, MatTooltipModule, MatDialogModule, FormsModule, MatCardModule, CommonModule, RouterLink],
+  imports: [
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatDialogModule,
+    FormsModule,
+    MatCardModule,
+    CommonModule,
+    RouterLink,
+  ],
   templateUrl: './user.component.html',
-  styleUrl: './user.component.scss'
+  styleUrl: './user.component.scss',
 })
 export class UserComponent {
-
   user = new User();
   allUsers: User[] = [];
-  
 
-
-  constructor(public dialog: MatDialog, public firestoreService: FirestoreService) { }
+  constructor(
+    private route: ActivatedRoute,
+    public dialog: MatDialog,
+    public firestoreService: FirestoreService
+  ) { }
 
   ngOnInit(): void {
     this.firestoreService.getUsers().subscribe((changes) => {
@@ -39,4 +47,3 @@ export class UserComponent {
     this.dialog.open(DialogAddUserComponent);
   }
 }
-
