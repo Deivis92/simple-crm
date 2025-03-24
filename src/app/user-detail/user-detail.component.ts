@@ -31,7 +31,7 @@ export class UserDetailComponent {
     private route: ActivatedRoute,
     public firestoreService: FirestoreService,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -49,10 +49,23 @@ export class UserDetailComponent {
 
 
   editAddress() {
-    this.dialog.open(DialogEditAddressComponent);
+    const dialog = this.dialog.open(DialogEditAddressComponent);
+
+    dialog.componentInstance.user = { ...this.user };
+    dialog.afterClosed().subscribe((result) => {
+      if (result) {
+        this.user = result;
+      }
+    });
   }
 
   editUserDetail() {
-    this.dialog.open(DialogEditUserComponent);
+    const dialog = this.dialog.open(DialogEditUserComponent);
+    dialog.componentInstance.user = { ...this.user };
+    dialog.afterClosed().subscribe((result) => {
+      if (result) {
+        this.user = result;  
+      }
+    });
   }
 }
