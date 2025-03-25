@@ -14,7 +14,7 @@ describe('UserComponent', () => {
       imports: [UserComponent],
       providers: [
         provideRouter([]),
-         { provide: Firestore, useValue: {} }  // Verwende die Mock-Funktion
+         { provide: Firestore, useValue: {} } 
       ],
     }).compileComponents();
 
