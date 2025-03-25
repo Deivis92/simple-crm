@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Firestore } from '@angular/fire/firestore';
 import { DialogEditAddressComponent } from './dialog-edit-address.component';
+import { MatDialogRef } from '@angular/material/dialog';
 
 describe('DialogEditAddressComponent', () => {
   let component: DialogEditAddressComponent;
@@ -8,9 +9,13 @@ describe('DialogEditAddressComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DialogEditAddressComponent]
+      imports: [DialogEditAddressComponent],
+      providers: [
+        { provide: Firestore, useValue: {} },
+        { provide: MatDialogRef, useValue: { close: () => {} } }
+      ],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(DialogEditAddressComponent);
     component = fixture.componentInstance;
